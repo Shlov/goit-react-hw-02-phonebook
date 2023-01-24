@@ -1,25 +1,33 @@
 import { Component } from "react";
+import { nanoid } from 'nanoid';
 
 
 
 export class App extends Component {
   
   state = {
-    contacts: [],
+    contacts: [{id: "jNXoZeO0-bIoz3ObfEAG7", name: "Anpu"}, {id: "j4Is3cCT0J1Aj8rLIHcKE", name: "Givgik"}],
     name: ''
   }
 
   recordName = (evnt) => {
-    console.log(evnt.target.value)
     this.setState({name: evnt.target.value})
   }
-
+  
   addContact = (e) => {
     e.preventDefault();
-    console.log(this.state.name)
+    const contact = {id: nanoid(), name: this.state.name}
+    // console.log(contact)
+    // this.setState(prevState => prevState.contacts = [...prevState.contacts, contact])
+    this.setState(state => state = {name: '' , contacts: [...state.contacts, contact]})
+    console.dir(e.target.elements)
+    e.target.reset()
+    // console.log(this.state.name)
+    // reset()
   }
 
   render () {
+    const contacts = this.state.contacts
     return (
       <div
         style={{
@@ -47,7 +55,9 @@ export class App extends Component {
         </form>
         <h3>Contact</h3>
         <ul>
-
+          {contacts.map(contact => 
+            <li key = {contact.id}>{contact.name}</li>
+          )}
         </ul>
       </div>
     );
