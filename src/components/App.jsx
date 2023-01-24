@@ -6,12 +6,12 @@ import { nanoid } from 'nanoid';
 export class App extends Component {
   
   state = {
-    contacts: [{
+    contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
       {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
       {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'}
-    }],
+      ],
     name: '',
     number: '',
     filter: ''
@@ -25,6 +25,10 @@ export class App extends Component {
     this.setState({number: evnt.target.value})
   }
   
+  recordFilter = (evnt) => {
+    this.setState({filter: evnt.target.value})
+  }
+  
   addContact = (e) => {
     e.preventDefault();
     const contact = {id: nanoid(), name: this.state.name, number: this.state.number}
@@ -33,10 +37,10 @@ export class App extends Component {
   }
 
   search = (evnt) => {
-    const textSearch = evnt.target.value
-    const filterContacts = this.state.contacts.filter({name} => )
-    this.setState({filter: filterContacts})
-
+    this.recordFilter(evnt)
+    const textSearch = evnt.target.value.toLowerCase()
+    const filterContacts = this.state.contacts.filter(({name}) => name.toLowerCase().includes(textSearch))
+    console.log(Boolean(textSearch))
   }
 
   render () {
@@ -90,7 +94,9 @@ export class App extends Component {
           />
         </label>
         <ul>
-          {contacts.map(contact => 
+          {!this.state.filter ? contacts.map(contact => 
+            <li key = {contact.id}>{contact.name}: {contact.number}</li>
+          ) : this.state.contacts.filter(({name}) => name.toLowerCase().includes(this.state.filter.toLowerCase())).map(contact => 
             <li key = {contact.id}>{contact.name}: {contact.number}</li>
           )}
         </ul>
@@ -98,5 +104,3 @@ export class App extends Component {
     );
   }
 }
-
-console.dir(App)
