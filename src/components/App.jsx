@@ -2,6 +2,7 @@ import { Component } from "react";
 import { nanoid } from 'nanoid';
 import { FormContact } from "./FormContact/FotmContact";
 import { Contacts } from "./Contacts/Contacts";
+import "@fontsource/rajdhani";
 
 
 
@@ -41,18 +42,13 @@ export class App extends Component {
     return (
       <div
         style={{
-          height: '100vh',
-          // display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
           fontSize: 40,
-          color: '#010101'
         }}
       >
         <h2>Phonebook</h2> 
           <FormContact onAddContact = {this.addContact}/>
         <h3>Contacts</h3>
-        <Contacts 
+          <Contacts 
           onSearch = {this.recordFilter}
           filter = {this.state.filter}
           contacts = {this.state.contacts}

@@ -1,17 +1,18 @@
+import { Button, Item, List } from "./ListContacts.styled"
 
 
 export const ListContacts = ({filter, contacts, onDeleteContact}) => {
   return (
-    <ul>
+    <List>
       {!filter ? contacts.map(contact => 
-        <li key = {contact.id}>{contact.name}: {contact.number} 
-        <button onClick = {() => onDeleteContact(contact.name)}>Delete</button>
-        </li>) 
+        <Item key = {contact.id}>{contact.name}: {contact.number} 
+        <Button onClick = {() => onDeleteContact(contact.name)}>Delete</Button>
+        </Item>) 
       : contacts.filter(({name}) => name.toLowerCase().includes(filter.toLowerCase())).map(contact => 
-        <li key = {contact.id}>{contact.name}: {contact.number} 
-        <button onClick = {() => onDeleteContact(contact.name)}>Delete</button>
-        </li>
+        <Item key = {contact.id}>{contact.name}: {contact.number} 
+        <Button onClick = {() => onDeleteContact(contact.name)}>Delete</Button>
+        </Item>
       )}
-    </ul>
+    </List>
   )
-}      
+}

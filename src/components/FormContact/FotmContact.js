@@ -1,4 +1,6 @@
+import { Button } from "components/ListContacts/ListContacts.styled";
 import { Component } from "react";
+import { Input , Label, Form} from "./FormContact.styled";
 
 
 export class FormContact extends Component {
@@ -25,10 +27,10 @@ export class FormContact extends Component {
 
   render () {
     return (
-    <form action="" onSubmit = {(e) => this.transferContact(e)}>
-          <label>
+    <Form action="" onSubmit = {(e) => this.transferContact(e)}>
+          <Label>
             Name
-            <input
+            <Input
             onChange = {(e) => this.recordName(e)}
             type="text"
             name="name"
@@ -36,10 +38,10 @@ export class FormContact extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             />
-          </label>
-          <label htmlFor="">
+          </Label>
+          <Label htmlFor="">
             Number
-            <input
+            <Input
               onChange = {(e) => this.recordNumber(e)}
               type="tel"
               name="number"
@@ -47,12 +49,12 @@ export class FormContact extends Component {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </label>
+          </Label>
           
-          <button type="submit" >
+          <Button type="submit" >
             Add contact
-          </button>
-        </form>
+          </Button>
+        </Form>
     )
   }
 

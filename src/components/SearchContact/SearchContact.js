@@ -1,13 +1,14 @@
+import { Input, Label } from "./SearchContact.styled"
 
 
 export const SearchContact = ({onSearch}) => {
   return (
-    <label htmlFor="">
+    <Label htmlFor="">
       Find contacts by name
-      <input
+      <Input
         onChange={(e)=> onSearch(e)}
         type="text" 
       />
-    </label>
+    </Label>
   )
 }
