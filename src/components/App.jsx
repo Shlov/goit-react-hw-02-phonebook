@@ -33,8 +33,11 @@ export class App extends Component {
   }
 
   deleteContact = (id) => {
- 
-    this.setState(({contacts}) => (  {contacts: contacts.filter((contact) => contact.id !==id)}))
+    this.setState(({contacts}) => ({contacts: contacts.filter((contact) => contact.id !==id)}))
+  }
+
+  getVisibleContact = () => {
+    return this.state.contacts.filter(({name}) => name.toLowerCase().includes(this.state.filter.toLowerCase()))
   }
 
   render () {
@@ -49,8 +52,7 @@ export class App extends Component {
         <h3>Contacts</h3>
           <Contacts 
           onSearch = {this.recordFilter}
-          filter = {this.state.filter}
-          contacts = {this.state.contacts}
+          contacts = {this.getVisibleContact()}
           onDeleteContact = {this.deleteContact}/>
       </div>
     );
