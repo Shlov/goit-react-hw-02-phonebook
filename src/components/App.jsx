@@ -22,20 +22,19 @@ export class App extends Component {
     this.setState({filter: evnt.target.value})
   }
 
-  addContact = (nameContact, numberContact, evnt) => {
+  addContact = (nameContact, numberContact) => {
     const include = this.state.contacts.some(({name}) => name.toLowerCase() === nameContact.toLowerCase())
-    if (!include) {
+    if (include) {
+      return alert(`${nameContact} is already in contacts.`)
+    } else {
       const contact = {id: nanoid(), name: nameContact, number: numberContact}
       this.setState(state => state = {contacts: [...state.contacts, contact]})
-      evnt.target.reset()
-    } else {
-      alert(`${nameContact} is already in contacts.`)
     }
   }
 
   deleteContact = (delName) => {
     const newContacts = this.state.contacts.filter(({name}) => name.toLowerCase() !== delName.toLowerCase())
-    this.setState({contacts: newContacts})
+    this.setState(prevState => {return prevState = {contacts: newContacts}})
   }
 
   render () {

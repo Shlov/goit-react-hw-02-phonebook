@@ -21,7 +21,8 @@ export class FormContact extends Component {
     evnt.preventDefault();
     const name = this.state.name
     const number = this.state.number
-    this.props.onAddContact(name, number, evnt)
+    this.props.onAddContact(name, number)
+    evnt.target.reset()
     // this.setState({name: '', number: ''})
   }
 
