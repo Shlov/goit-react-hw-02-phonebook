@@ -2,11 +2,11 @@ import { ListContacts } from "components/ListContacts/ListContacts"
 import { SearchContact } from "components/SearchContact/SearchContact"
 
 
-export const Contacts = ({onSearch, filter, contacts, onDeleteContact}) => {
+export const Contacts = ({onSearch, contacts, onDeleteContact}) => {
   return (
     <>
       <SearchContact onSearch = {onSearch}/>
-      <ListContacts filter = {filter} contacts = {contacts} onDeleteContact = {onDeleteContact}/>
+      <ListContacts contacts = {contacts} onDeleteContact = {onDeleteContact}/>
     </>
   )
 }

@@ -4,8 +4,6 @@ import { FormContact } from "./FormContact/FotmContact";
 import { Contacts } from "./Contacts/Contacts";
 import "@fontsource/rajdhani";
 
-
-
 export class App extends Component {
   
   state = {
@@ -42,11 +40,7 @@ export class App extends Component {
 
   render () {
     return (
-      <div
-        style={{
-          fontSize: 40,
-        }}
-      >
+      <div style={{fontSize: 40,}}>
         <h2>Phonebook</h2> 
           <FormContact onAddContact = {this.addContact}/>
         <h3>Contacts</h3>
