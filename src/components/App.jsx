@@ -32,9 +32,9 @@ export class App extends Component {
     }
   }
 
-  deleteContact = (delName) => {
-    const newContacts = this.state.contacts.filter(({name}) => name.toLowerCase() !== delName.toLowerCase())
-    this.setState(prevState => {return prevState = {contacts: newContacts}})
+  deleteContact = (id) => {
+ 
+    this.setState(({contacts}) => (  {contacts: contacts.filter((contact) => contact.id !==id)}))
   }
 
   render () {
